@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahsulotlar Katalogi | iStore Uzbekistan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-black: #080808;
+            --bg-card: #121212;
+            --accent-red: #e60023;
+            --accent-glow: #ff2d55;
+            --text-main: #f5f5f7;
+            --text-muted: #86868b;
+            --border-color: #262626;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif; }
+        body { background-color: var(--bg-black); color: var(--text-main); line-height: 1.5; }
+        a { text-decoration: none; color: inherit; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+
+        /* HEADER */
+        header { position: fixed; top: 0; left: 0; width: 100%; background: rgba(8, 8, 8, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-color); z-index: 1000; }
+        .nav-wrapper { display: flex; align-items: center; justify-content: space-between; height: 70px; }
+        .logo { font-size: 22px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+        .logo span { color: var(--accent-red); }
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-muted); transition: var(--transition); }
+        .nav-links a.active { color: var(--text-main); border-bottom: 2px solid var(--accent-red); padding-bottom: 5px; }
+
+        /* PAGE HEADER & FILTER */
+        .page-header { padding-top: 120px; padding-bottom: 30px; text-align: center; }
+        .page-header h1 { font-size: 42px; font-weight: 800; margin-bottom: 10px; }
+
+        .filter-bar {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 10px 24px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--accent-red);
+            color: white;
+            border-color: var(--accent-red);
+        }
+
+        /* PRODUCTS GRID */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 80px;
+        }
+
+        .product-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .product-card:hover {
+            border-color: var(--accent-red);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(230, 0, 35, 0.2);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--accent-red);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            margin: 20px 0;
+        }
+
+        .product-title { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+        .product-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 15px; }
+        .product-price { font-size: 20px; font-weight: 700; color: var(--accent-glow); margin-bottom: 15px; }
+
+        .btn-buy {
+            width: 100%;
+            padding: 12px;
+            background: transparent;
+            border: 1px solid var(--accent-red);
+            color: var(--text-main);
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-buy:hover {
+            background: var(--accent-red);
+            color: white;
+        }
+
+        /* FOOTER */
+        footer { background: #000; border-top: 1px solid var(--border-color); padding: 40px 0; text-align: center; color: var(--text-muted); font-size: 14px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="index.html" class="logo"><i class="fa-brands fa-apple"></i> iStore <span>Uzbekistan</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Bosh sahifa</a></li>
+                <li><a href="products.html" class="active">Mahsulotlar</a></li>
+                <li><a href="promos.html">Aksiyalar</a></li>
+                <li><a href="map.html">Xarita va Manzil</a></li>
+                <li><a href="about.html">Biz Haqimizda</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Apple Mahsulotlari Menyu Katalogi</h1>
+            <p>Barcha original qurilmalar va rasmiy kafolat bilan</p>
+        </div>
+
+        <!-- CATEGORY FILTERS -->
+        <div class="filter-bar">
+            <button class="filter-btn active" onclick="filterProducts('all')">Barchasi</button>
+            <button class="filter-btn" onclick="filterProducts('iphone')">iPhone</button>
+            <button class="filter-btn" onclick="filterProducts('mac')">MacBook</button>
+            <button class="filter-btn" onclick="filterProducts('ipad')">iPad</button>
+            <button class="filter-btn" onclick="filterProducts('watch')">Watch</button>
+        </div>
+
+        <!-- PRODUCTS GRID -->
+        <div class="products-grid" id="productGrid">
+            <!-- iPhone 16 Pro -->
+            <div class="product-card" data-category="iphone">
+                <span class="product-badge">Yangi</span>
+                <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-finish-select-202409-6-9inch-deserttitanium?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1723753781250" alt="iPhone 16 Pro" class="product-img">
+                <div class="product-title">iPhone 16 Pro Max</div>
+                <div class="product-desc">256GB Desert Titanium / A18 Pro</div>
+                <div class="product-price">18,500,000 UZS</div>
+                <button class="btn-buy" onclick="addToCart('iPhone 16 Pro Max')">Savatga qo'shish</button>
+            </div>
+
+            <!-- MacBook Pro M3 -->
+            <div class="product-card" data-category="mac">
+                <span class="product-badge">Top Model</span>
+                <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp14-spaceblack-select-202310?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1697230830200" alt="MacBook Pro" class="product-img">
+                <div class="product-title">MacBook Pro 14" M3</div>
+                <div class="product-desc">16GB / 512GB SSD Space Black</div>
+                <div class="product-price">24,000,000 UZS</div>
+                <button class="btn-buy" onclick="addToCart('MacBook Pro 14 M3')">Savatga qo'shish</button>
+            </div>
+
+            <!-- iPad Pro M4 -->
+            <div class="product-card" data-category="ipad">
+                <span class="product-badge">Ultratupik</span>
+                <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-wifi-spaceblack-202405?wid=940&hei=1112&fmt=png-alpha&.v=1713308648211" alt="iPad Pro" class="product-img">
+                <div class="product-title">iPad Pro 13" M4</div>
+                <div class="product-desc">OLED Displey / 256GB Wi-Fi</div>
+                <div class="product-price">16,200,000 UZS</div>
+                <button class="btn-buy" onclick="addToCart('iPad Pro 13 M4')">Savatga qo'shish</button>
+            </div>
+
+            <!-- Apple Watch Ultra 2 -->
+            <div class="product-card" data-category="watch">
+                <span class="product-badge">Eksklyuziv</span>
+                <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/s9-ultra2-titanium-black-trail-black-gray-202409?wid=1200&hei=630&fmt=jpeg&qlt=95&.v=1724276189562" alt="Apple Watch Ultra" class="product-img">
+                <div class="product-title">Apple Watch Ultra 2</div>
+                <div class="product-desc">49mm Titanium Case / Ocean Band</div>
+                <div class="product-price">11,500,000 UZS</div>
+                <button class="btn-buy" onclick="addToCart('Apple Watch Ultra 2')">Savatga qo'shish</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 iStore Uzbekistan. Barcha huquqlar himoyalangan.</p>
+        </div>
+    </footer>
+
+    <script>
+        function filterProducts(category) {
+            const cards = document.querySelectorAll('.product-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function addToCart(productName) {
+            alert(productName + " savatga muvaffaqiyatli qo'shildi!");
+        }
+    </script>
+</body>
+</html>

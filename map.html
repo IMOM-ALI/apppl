@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xarita va Manzil | iStore Uzbekistan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-black: #080808;
+            --bg-card: #121212;
+            --accent-red: #e60023;
+            --accent-glow: #ff2d55;
+            --text-main: #f5f5f7;
+            --text-muted: #86868b;
+            --border-color: #262626;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif; }
+        body { background-color: var(--bg-black); color: var(--text-main); line-height: 1.5; }
+        a { text-decoration: none; color: inherit; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+
+        /* HEADER */
+        header { position: fixed; top: 0; left: 0; width: 100%; background: rgba(8, 8, 8, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-color); z-index: 1000; }
+        .nav-wrapper { display: flex; align-items: center; justify-content: space-between; height: 70px; }
+        .logo { font-size: 22px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+        .logo span { color: var(--accent-red); }
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-muted); transition: var(--transition); }
+        .nav-links a.active { color: var(--text-main); border-bottom: 2px solid var(--accent-red); padding-bottom: 5px; }
+
+        .page-header { padding-top: 130px; padding-bottom: 30px; text-align: center; }
+        .page-header h1 { font-size: 42px; font-weight: 800; }
+
+        .map-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .store-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .store-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .store-card:hover, .store-card.active {
+            border-color: var(--accent-red);
+            background: #181818;
+        }
+
+        .store-card h3 { font-size: 18px; margin-bottom: 8px; color: var(--text-main); }
+        .store-card p { font-size: 14px; color: var(--text-muted); margin-bottom: 5px; }
+
+        .map-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            overflow: hidden;
+            min-height: 400px;
+        }
+
+        .map-box iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        footer { background: #000; border-top: 1px solid var(--border-color); padding: 40px 0; text-align: center; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="index.html" class="logo"><i class="fa-brands fa-apple"></i> iStore <span>Uzbekistan</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Bosh sahifa</a></li>
+                <li><a href="products.html">Mahsulotlar</a></li>
+                <li><a href="promos.html">Aksiyalar</a></li>
+                <li><a href="map.html" class="active">Xarita va Manzil</a></li>
+                <li><a href="about.html">Biz Haqimizda</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Bizning Do'konlarimiz</h1>
+            <p>Toshkent shahridagi rasmiy Apple savdo va servis markazlari</p>
+        </div>
+
+        <div class="map-wrapper">
+            <div class="store-list">
+                <div class="store-card active">
+                    <h3><i class="fa-solid fa-location-dot" style="color: var(--accent-red);"></i> Markaziy Do'kon</h3>
+                    <p>Amir Temur shoh ko'chasi, 107-uy</p>
+                    <p><i class="fa-solid fa-phone"></i> +998 (90) 123-45-67</p>
+                    <p><i class="fa-solid fa-clock"></i> 10:00 - 22:00 (Har kuni)</p>
+                </div>
+                <div class="store-card">
+                    <h3><i class="fa-solid fa-location-dot" style="color: var(--accent-red);"></i> Magic City Filiali</h3>
+                    <p>Magic City ko'ngilochar parki, 3-blok</p>
+                    <p><i class="fa-solid fa-phone"></i> +998 (90) 987-65-43</p>
+                    <p><i class="fa-solid fa-clock"></i> 10:00 - 23:00</p>
+                </div>
+            </div>
+
+            <div class="map-box">
+                <!-- Google Maps Embed -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.387140882352!2d69.2818!3d41.3111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDE4JzQwLjAiTiA2OcKwMTYnNTQuNCJF!5e0!3m2!1sen!2s!4v1630000000000!5m2!1sen!2s" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 iStore Uzbekistan. Barcha huquqlar himoyalangan.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
